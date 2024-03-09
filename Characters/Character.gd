@@ -11,8 +11,8 @@ export (int) var max_speed: int = 50
 var move_direction: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
 
-onready var state_machine: FiniteStateMachine = get_node("FiniteStateMachine")
 onready var animated_sprite: AnimatedSprite = get_node("AnimatedSprite")
+onready var state_machine: Node = get_node("FiniteStateMachine")
 
 
 func move() -> void:
@@ -25,8 +25,13 @@ func _physics_process(_delta: float) -> void:
 	velocity = move_and_slide(velocity)
 	velocity = lerp(velocity, Vector2.ZERO, FRICTION)
 
-func tage_damage(dam: int, dir: Vector2, force: int) -> void:
+
+func take_damage(dam: int, dir: Vector2, force: int) -> void:
 	hp -= dam
-	state_machine.set_state(state_machine.states.hurt)
-	velocity -= dir * force
+	if hp > 0:
+		state_machine.set_state(state_machine.states.hurt)
+		velocity += dir * force
+	else:
+		state_machine.set_state(state_machine.states.dead)
+		velocity += dir * force * 2
 

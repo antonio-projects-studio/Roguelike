@@ -4,7 +4,7 @@ class_name Player
 
 onready var sword: Node2D = get_node("Sword")
 onready var sword_animation_player: AnimationPlayer = get_node("Sword/SwordAnimationPlayer")
-
+onready var sword_hitbox: Hitbox = get_node("Sword/Node2D/Sprite/Hitbox")
 
 func get_input() -> void:
 	move_direction = Vector2.ZERO
@@ -28,6 +28,7 @@ func _process(_delta):
 		animated_sprite.flip_h = true
 
 	sword.rotation = mouse_direction.angle()
+	sword_hitbox.knockback_direction = mouse_direction
 
 	if mouse_direction.x > 0 and sword.scale.y == -1:
 		sword.scale.y = 1
@@ -37,3 +38,4 @@ func _process(_delta):
 	if Input.is_action_just_pressed("ui_attack") and not sword_animation_player.is_playing():
 		sword_animation_player.play("attack")
 
+	
