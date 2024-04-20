@@ -14,10 +14,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/Character.gd"
 }, {
+"base": "Node2D",
+"class": "DungeonRoom",
+"language": "GDScript",
+"path": "res://Rooms/Room.gd"
+}, {
 "base": "Character",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://Characters/Enemy/Enemy.gd"
+"path": "res://Characters/Enemies/Enemy.gd"
 }, {
 "base": "Node",
 "class": "FiniteStateMachine",
@@ -27,7 +32,7 @@ _global_script_classes=[ {
 "base": "Enemy",
 "class": "FlyingCreature",
 "language": "GDScript",
-"path": "res://Characters/Enemy/Flying Creature/FlyingCreature.gd"
+"path": "res://Characters/Enemies/Flying Creature/FlyingCreature.gd"
 }, {
 "base": "Area2D",
 "class": "Hitbox",
@@ -41,6 +46,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Character": "res://Art/v1.1 dungeon crawler 16x16 pixel pack/heroes/knight/knight_idle_anim_f0.png",
+"DungeonRoom": "",
 "Enemy": "res://Art/v1.1 dungeon crawler 16x16 pixel pack/enemies/goblin/goblin_idle_anim_f0.png",
 "FiniteStateMachine": "",
 "FlyingCreature": "res://Art/v1.1 dungeon crawler 16x16 pixel pack/enemies/flying creature/fly_anim_f0.png",
